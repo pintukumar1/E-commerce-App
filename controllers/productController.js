@@ -1,3 +1,11 @@
+const Product = require("../models/product")
+
+const createProduct = async (req, res, next) => {
+    const product = await Product.create(req.body);
+
+    res.status(201).json({ msg: "success", product })
+}
+
 const getProducts = (req, res, next) => {
     res.status(200).json({
         success: true,
@@ -6,3 +14,4 @@ const getProducts = (req, res, next) => {
 }
 
 exports.getProducts = getProducts
+exports.createProduct = createProduct

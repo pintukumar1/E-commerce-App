@@ -3,12 +3,12 @@ const mongoose = require("mongoose")
 require("dotenv").config()
 const app = express()
 const productRoutes = require("./routes/productRoutes")
-
-app.get("/", (req, res) => {
-    res.send("<h1>Welcome to nodejs</h1>")
-})
+const bodyParser = require('body-parser')
 
 app.use("/api/product", productRoutes)
+
+// app.use(express.json())
+app.use(bodyParser.json())
 
 const port = process.env.PORT || 5000
 
